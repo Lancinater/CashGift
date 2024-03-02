@@ -18,4 +18,7 @@ public class CashGiftService {
     public Optional<CashGift> getOneMovie(ObjectId id){
         return cashGiftRepository.findById(id);
     }
+    public CashGift saveCashGift (CashGift cashGift){
+        return cashGiftRepository.save(cashGift);
+    }
 }
