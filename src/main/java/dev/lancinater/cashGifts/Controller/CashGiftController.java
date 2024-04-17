@@ -1,5 +1,7 @@
-package dev.lancinater.cashGifts;
+package dev.lancinater.cashGifts.Controller;
 
+import dev.lancinater.cashGifts.Model.CashGift;
+import dev.lancinater.cashGifts.Service.CashGiftService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ public class CashGiftController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<CashGift>> getCashGiftById(@PathVariable ObjectId id){
-        return new ResponseEntity<Optional<CashGift>>(cashGiftService.getOneMovie(id),HttpStatus.OK);
+        return new ResponseEntity<Optional<CashGift>>(cashGiftService.getOneCashGift(id),HttpStatus.OK);
     }
 
     @PostMapping

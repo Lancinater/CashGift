@@ -1,4 +1,4 @@
-package dev.lancinater.cashGifts;
+package dev.lancinater.cashGifts.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

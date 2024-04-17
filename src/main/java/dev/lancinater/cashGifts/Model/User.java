@@ -1,4 +1,4 @@
-package dev.lancinater.cashGifts;
+package dev.lancinater.cashGifts.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +19,6 @@ public class User {
     private String userName;
     private String password;
     private List<CashGift> cashGifts;
+    Role role;
 
 }
