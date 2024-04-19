@@ -13,12 +13,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class CashGiftUser {
     @Id
     private ObjectId id;
     private String userName;
     private String password;
     private List<CashGift> cashGifts;
-    Role role;
 
 }
