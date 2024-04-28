@@ -16,7 +16,7 @@ import java.util.List;
 public class CashGiftUser {
     @Id
     private ObjectId id;
-    private String userName;
+    private String username;
     private String password;
     private List<CashGift> cashGifts;
 

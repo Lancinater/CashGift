@@ -42,7 +42,8 @@ public class SecurityConfig{
                         authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
-                                .requestMatchers("/api/v1/cashGifts/login","/api/v1/cashGifts/signup").permitAll()
+                                .requestMatchers("/api/v1/cashGifts/register").permitAll()
+                                .requestMatchers("/api/v1/cashGifts/users").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->

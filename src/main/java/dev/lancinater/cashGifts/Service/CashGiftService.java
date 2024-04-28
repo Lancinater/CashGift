@@ -12,8 +12,14 @@ import java.util.Optional;
 @Service
 public class CashGiftService {
 
+
+    private final CashGiftRepository cashGiftRepository;
+
     @Autowired
-    private CashGiftRepository cashGiftRepository;
+    public CashGiftService(CashGiftRepository cashGiftRepository) {
+        this.cashGiftRepository = cashGiftRepository;
+    }
+
     public List<CashGift> allCashGifts(){
         return cashGiftRepository.findAll();
     }

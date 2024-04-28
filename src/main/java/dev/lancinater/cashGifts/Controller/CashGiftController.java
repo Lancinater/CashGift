@@ -1,7 +1,9 @@
 package dev.lancinater.cashGifts.Controller;
 
 import dev.lancinater.cashGifts.Model.CashGift;
+import dev.lancinater.cashGifts.Model.CashGiftUser;
 import dev.lancinater.cashGifts.Service.CashGiftService;
+import dev.lancinater.cashGifts.Service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +17,15 @@ import java.util.Optional;
 @RequestMapping("/api/v1/cashGifts")
 public class CashGiftController {
 
+
+    private final CashGiftService cashGiftService;
+    private final UserService userService;
+
     @Autowired
-    private CashGiftService cashGiftService;
+    public CashGiftController(CashGiftService cashGiftService, UserService userService) {
+        this.cashGiftService = cashGiftService;
+        this.userService = userService;
+    }
 
     @GetMapping
     public ResponseEntity<List<CashGift>> getAllCashGifts(){
@@ -33,4 +42,6 @@ public class CashGiftController {
         CashGift savedCashGift = cashGiftService.saveCashGift(cashGift);
         return new ResponseEntity<>(savedCashGift, HttpStatus.CREATED);
     }
+
+
 }
