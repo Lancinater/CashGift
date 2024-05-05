@@ -33,4 +33,9 @@ public class UserController {
         CashGiftUser newUser = userService.registerNewUser(cashGiftUser);
         return new ResponseEntity<>(newUser,HttpStatus.CREATED);
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<String> loginUser(){
+        return new ResponseEntity<>("Login successful!", HttpStatus.OK);
+    }
 }

@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         CashGiftUser cashGiftUser = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: "+ username));
-        return new User(cashGiftUser.getUsername(),cashGiftUser.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("USER")));
+        return new User(cashGiftUser.getUsername(),cashGiftUser.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
     }
 
     public CashGiftUser registerNewUser(CashGiftUser cashGiftUser){
