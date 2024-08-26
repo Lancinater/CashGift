@@ -27,7 +27,7 @@ public class CashGiftController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping 
     public ResponseEntity<List<CashGift>> getAllCashGifts(){
         return new ResponseEntity<List<CashGift>>(cashGiftService.allCashGifts(),HttpStatus.OK);
     }

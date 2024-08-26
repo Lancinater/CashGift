@@ -3,6 +3,7 @@ package dev.lancinater.cashGifts.Service;
 import dev.lancinater.cashGifts.Model.CashGiftUser;
 import dev.lancinater.cashGifts.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -29,13 +31,15 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         CashGiftUser cashGiftUser = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: "+ username));
-        return new User(cashGiftUser.getUsername(),cashGiftUser.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+        String[] roles = cashGiftUser.getRoles().toArray(new String[0]);
+        return new User(cashGiftUser.getUsername(),cashGiftUser.getPassword(), AuthorityUtils.createAuthorityList(roles));
     }
 
     public CashGiftUser registerNewUser(CashGiftUser cashGiftUser){
         String encodedPassword = passwordEncoder.encode(cashGiftUser.getPassword());
         cashGiftUser.setUsername(cashGiftUser.getUsername());
         cashGiftUser.setPassword(encodedPassword);
+        cashGiftUser.setRoles(Set.of("ROLE_USER"));
         return userRepository.save(cashGiftUser);
     }
 

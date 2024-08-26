@@ -34,8 +34,8 @@ public class UserController {
         return new ResponseEntity<>(newUser,HttpStatus.CREATED);
     }
 
-    @GetMapping("/login")
-    public ResponseEntity<String> loginUser(){
-        return new ResponseEntity<>("Login successful!", HttpStatus.OK);
-    }
+//    @GetMapping("/login")
+//    public ResponseEntity<String> loginUser(){
+//        return new ResponseEntity<>("Login successful!", HttpStatus.OK);
+//    }
 }
