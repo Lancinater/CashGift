@@ -31,10 +31,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);  // 直接跳过，继续后面的处理
             return;
         }
-        String header = request.getHeader("Authorization");
+        String header = request.getHeader("Authorisation");
+        System.out.println(header);
 
         if(header!=null && header.startsWith("Bearer ")){
             String token = header.substring(7);
+            System.out.println(token);
 
             if(jwtTokenProvider.validateToken(token)){
                 String username = jwtTokenProvider.getUsernameFromJwt(token);
