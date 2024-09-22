@@ -36,6 +36,11 @@ public class UserService implements UserDetailsService {
     }
 
     public CashGiftUser registerNewUser(CashGiftUser cashGiftUser){
+
+        if(userRepository.findByUsername(cashGiftUser.getUsername()).isPresent()){
+            System.out.println("User already exists");
+            throw new RuntimeException("User already exists");
+        }
         String encodedPassword = passwordEncoder.encode(cashGiftUser.getPassword());
         cashGiftUser.setUsername(cashGiftUser.getUsername());
         cashGiftUser.setPassword(encodedPassword);

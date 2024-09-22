@@ -29,9 +29,14 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<CashGiftUser> registerUser(@RequestBody CashGiftUser cashGiftUser){
-        CashGiftUser newUser = userService.registerNewUser(cashGiftUser);
-        return new ResponseEntity<>(newUser,HttpStatus.CREATED);
+    public ResponseEntity<?> registerUser(@RequestBody CashGiftUser cashGiftUser){
+        try {
+            CashGiftUser newUser = userService.registerNewUser(cashGiftUser);
+            return new ResponseEntity<>(newUser,HttpStatus.CREATED);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
+
     }
 
 //    @GetMapping("/login")

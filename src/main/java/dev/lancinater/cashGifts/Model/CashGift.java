@@ -20,4 +20,6 @@ public class CashGift {
     private String name;
 
     private double amount;
+
+    private String isReturned = "❌";
 }

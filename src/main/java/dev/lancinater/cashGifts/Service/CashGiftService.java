@@ -29,4 +29,7 @@ public class CashGiftService {
     public CashGift saveCashGift (CashGift cashGift){
         return cashGiftRepository.save(cashGift);
     }
+    public List<CashGift> getCashGiftsByName(String name){
+        return cashGiftRepository.findCashGiftByName(name);
+    }
 }

@@ -54,8 +54,8 @@ public class SecurityConfig{
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                                .requestMatchers("/api/v1/cashGifts").permitAll()
-//                                .requestMatchers("/api/v1/cashGifts").hasAnyRole("USER","ADMIN")
+//                                .requestMatchers("/api/v1/cashGifts").permitAll()
+                                .requestMatchers("/api/v1/cashGifts").hasAnyRole("USER","ADMIN")
                                 .requestMatchers("/api/v1/cashGifts/register").permitAll()
                                 .requestMatchers("/api/auth/login").permitAll()
                                 .anyRequest().authenticated())
