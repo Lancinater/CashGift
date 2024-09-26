@@ -29,7 +29,21 @@ public class CashGiftService {
     public CashGift saveCashGift (CashGift cashGift){
         return cashGiftRepository.save(cashGift);
     }
-    public List<CashGift> getCashGiftsByName(String name){
+    public CashGift getCashGiftsByName(String name){
         return cashGiftRepository.findCashGiftByName(name);
+    }
+
+    public CashGift returnCashGift(String name) {
+        CashGift cashGift = cashGiftRepository.findCashGiftByName(name);
+        if(cashGift.getIsReturned().equals("✅")){
+            cashGift.setIsReturned("❌");
+        }else{
+            cashGift.setIsReturned("✅");
+        }
+        return cashGiftRepository.save(cashGift);
+    }
+
+    public void deleteCashGift(CashGift cashGift) {
+        cashGiftRepository.delete(cashGift);
     }
 }

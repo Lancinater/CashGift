@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface CashGiftRepository extends MongoRepository<CashGift, ObjectId> {
-    List<CashGift> findCashGiftByName(String name);
+    CashGift findCashGiftByName(String name);
 }

@@ -43,5 +43,16 @@ public class CashGiftController {
         return new ResponseEntity<>(savedCashGift, HttpStatus.CREATED);
     }
 
+    @PutMapping("/return/{name}")
+    public ResponseEntity<CashGift> returnCashGift(@PathVariable String name){
+        CashGift returnedCashGift = cashGiftService.returnCashGift(name);
+        return new ResponseEntity<>(returnedCashGift,HttpStatus.OK);
+    }
 
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<?> deleteCashGift(@PathVariable String name){
+        CashGift cashGift = cashGiftService.getCashGiftsByName(name);
+        cashGiftService.deleteCashGift(cashGift);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
