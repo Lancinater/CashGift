@@ -49,8 +49,9 @@ public class CashGiftController {
         return new ResponseEntity<>(returnedCashGift,HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{name}")
+    @DeleteMapping("/{name}")
     public ResponseEntity<?> deleteCashGift(@PathVariable String name){
+        System.out.println("Deleting cash gift");
         CashGift cashGift = cashGiftService.getCashGiftsByName(name);
         cashGiftService.deleteCashGift(cashGift);
         return new ResponseEntity<>(HttpStatus.OK);

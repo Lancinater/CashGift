@@ -45,5 +45,6 @@ public class CashGiftService {
 
     public void deleteCashGift(CashGift cashGift) {
         cashGiftRepository.delete(cashGift);
+        System.out.println("Cash Gift deleted");
     }
 }

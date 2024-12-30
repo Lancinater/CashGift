@@ -13,5 +13,4 @@ public class CashGiftsApplication {
 		SpringApplication.run(CashGiftsApplication.class, args);
 	}
 
-
 }

@@ -28,15 +28,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String path = request.getServletPath();
         if ("/api/auth/login".equals(path) || "/api/v1/cashGifts/register".equals(path)) {
-            filterChain.doFilter(request, response);  // 直接跳过，继续后面的处理
+            filterChain.doFilter(request, response);
             return;
         }
-        String header = request.getHeader("Authorisation");
-        System.out.println(header);
+        String header = request.getHeader("Authorization");
 
         if(header!=null && header.startsWith("Bearer ")){
             String token = header.substring(7);
-            System.out.println(token);
 
             if(jwtTokenProvider.validateToken(token)){
                 String username = jwtTokenProvider.getUsernameFromJwt(token);

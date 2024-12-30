@@ -44,7 +44,6 @@ public class AuthController {
             );
             System.out.println("login successful!");
             String jwt = jwtTokenProvider.generateToken(authentication);
-            System.out.println(jwt);
 
             return ResponseEntity.ok(new AuthResponse(jwt));
         } catch (AuthenticationException e) {

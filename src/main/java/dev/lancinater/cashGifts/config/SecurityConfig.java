@@ -53,7 +53,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-                        authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                        authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasAnyRole("ADMIN","USER")
 //                                .requestMatchers("/api/v1/cashGifts").permitAll()
                                 .requestMatchers("/api/v1/cashGifts").hasAnyRole("USER","ADMIN")
                                 .requestMatchers("/api/v1/cashGifts/register").permitAll()
